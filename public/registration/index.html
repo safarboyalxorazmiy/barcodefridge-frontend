@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regestration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      width: 333px;
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      flex-direction: column;
+    }
+
+    input {
+      width: 100%;;
+      padding: 20px 25px;
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 10px;
+    }
+
+    input::placeholder {
+      font-size: 18px;
+      color: #000;
+    }
+
+    button {
+      width: 100%;
+      padding: 20px;
+      font-weight: bold;
+      background-color: #000;
+      color: #fff;
+      border-radius: 10px;
+      border: 1px solid #000;
+      cursor: pointer;
+      transition: background-color 0.5s;
+      font-size: 18px;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input id="name" type="text" placeholder="Ism" />
+    <input id="surname" type="text" placeholder="Familya" />
+
+    <input id="password" type="text" placeholder="********" />
+
+    <button id="login">KIRISH</button>
+  </form>
+
+  <script>
+    document.querySelector("#login").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let surname = document.getElementById("surname").value;
+      let password = document.getElementById("password").value;
+
+      register(name, surname, password);
+      // login(name, surname, password);
+    })
+
+    function login(name, surname, password) {
+      let loginObj = {
+          username: name + surname + "@gmail.com", 
+          password: password
+        }
+      
+      
+      fetch("http://localhost:7777/api/v1/auth/authenticate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(loginObj)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return null;
+      })
+      .then (data => {
+        if (data) {
+          localStorage.setItem("token", data.access_token)
+          window.location.replace("/")
+        }
+      })
+    }
+
+    function register(name, surname, password) {
+      console.log(name + " " + surname + " " + password)
+
+      let registerObj = {
+        firstname: name,
+        lastname: surname,
+        email: name + surname + "@gmail.com", 
+        password: password
+      }
+
+      fetch("http://localhost:7777/api/v1/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(registerObj)
+      })
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nusxalash</title>
+
+  <link rel="stylesheet" href="print.css">
+</head>
+<body>
+  <a href="../index.html" class="back">
+    <img src="../images/back.png" />
+  </a>
+
+  <div class="fridge">
+    <div class="fridge-content">
+      <h1>PRM - 211</h1>
+
+      <div class="content-body">
+        <h2>Rang</h2>
+
+        <div class="color">
+          <div class="white circle"></div>
+          <div class="black circle"></div>
+          <div class="grey circle"></div>
+        </div>
+  
+        <div class="orentation">
+          <h2>Orentatsiya</h2>
+  
+          <div class="orentation-buttons">
+            <button class="orentation-btn local">Local</button>
+            <button class="orentation-btn export">Export</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="fridge-image">
+      <img src="../images/prm-211.png" width="262" alt="" />
+    </div>
+  </div>
+
+  <button class="print-btn">
+    <img src="print-icon.svg" width="34" height="34" alt="" />
+  </button>
+
+  <script>
+    document.querySelector(".fridge-content h1").innerText = localStorage.getItem("model");
+
+    document.querySelector(".fridge-image img").setAttribute('src', "../images/" + localStorage.getItem("model") + ".png");
+    
+    let colorWrapper = document.querySelector(".color")
+
+    if (localStorage.getItem("model") == "prm-211") {
+      colorWrapper.innerHTML = "";
+      
+      const whiteDiv = document.createElement('div');
+      whiteDiv.className = 'white circle';
+
+      // Step 2: Create the second <div> element
+      const blackDiv = document.createElement('div');
+      blackDiv.className = 'black circle';
+
+      const inoxDiv = document.createElement('div');
+      inoxDiv.className = 'inox circle';
+
+      // Step 3: Append the created <div> elements to the colorWrapper
+      colorWrapper.appendChild(whiteDiv);
+      colorWrapper.appendChild(blackDiv);
+      colorWrapper.appendChild(inoxDiv);
+    }
+
+
+    document.querySelectorAll(".circle").forEach(e => {
+      e.addEventListener("click", () => {
+        document.querySelector(".fridge-image img").setAttribute("src", "../images/PRM211_"+ e.getAttribute('class').split(' ')[0] +".jpg")
+      })
+    })
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

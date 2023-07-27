@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.back {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 148px;
+    height: 50px;
+    border-radius: 9px;
+    cursor: pointer;
+
+    transition: backround-color 0.2s;
+}
+
+.back:hover {
+    background: #fafafa;
+}
+
+.back span {
+    font-weight: 900;
+}
+
+.container {
+    max-width: calc((361px * 3) + (25px * 2));
+    margin: 250px auto;
+}
+
+.fridge {
+    display: flex;
+    align-items: center;
+    width: 361px;
+    height: 294px;
+    justify-content: center;
+    gap: 18px;
+    padding: 22px 25px 14px 25px;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.prm-211 {
+    background-color: #B185AE;
+    color: #fff;
+    width: 361px;
+    height: 294px;
+}
+
+.prm-261 {
+    background-color: #E7E4E8;
+    color: #000000;
+    justify-content: center;
+}
+
+.prm-315 {
+    background-color:#C3AFCF ;
+    color: #fff;
+}
+
+.fridge-wrapper {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.container h1 {
+    font-size: 30px;
+    font-weight: 700;    
+}
+
+.fridge-wrapper .fridge .fridge-text h2 {
+    font-weight: 700;
+    font-size: 25px;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.fridge-text button {
+    border-radius: 24px;
+    padding: 13px 24px 13px 24px;
+    border: solid 0px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.fridge-text button:hover {
+    cursor: pointer;
+}
+
+.fridge-wrapper .prm-261 .fridge-text button {
+    background-color: #000000;
+    color: #fff;
+}
+
+.fridge-wrapper .fridge {
+    border-radius: 13px;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        max-width: calc((300px * 3) + (25px * 2));
+    }
+
+    .fridge {
+        width: 300px;
+    }
+
+    .fridge-text button {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 12px 10px 12px 10px;
+    }
+
+    .prm-211 .fridge-image img {
+        width: 140px;
+    }
+
+    .fridge-wrapper .fridge .fridge-text h2 {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        margin-top: 120px;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .fridge-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    #quit {
+        top: 20px;
+        left: 20px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    #quit span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .container h1 {
+        text-align: center;
+    }
+
+    #quit {
+        top: 20px;
+        left: 20px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    #quit span {
+        display: none;
+    }
+
+    .fridge-wrapper {
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        margin-top: 100px;
+        max-width: calc((361px * 3) + (25px * 2));
+ 
+    }
+
+
+    .fridge-wrapper .fridge .fridge-text h2 {
+        font-size: 18px;
+    }
+
+}

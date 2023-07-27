@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Muzlatgichlar</title>
+</head>
+<body>
+    <div class="back" id="quit">
+        <img src="images/signout.svg" alt="" />
+
+        <span>CHIQISH</span>
+    </div>
+
+    <div class="container">
+        <h1>Muzlatgich</h1>
+
+        <div class="fridge-wrapper">
+            <div class="fridge prm-211">
+                <div class="fridge-text">
+                    <h2>PRM - 211</h2>
+                    <button class="qrButton">QR CODE</button>
+                </div>
+
+                <div class="fridge-image">
+                    <img src="images/prm-211.png" alt="">
+                </div>
+            </div>
+            <div class="fridge prm-261">
+                <div class="fridge-text">
+                    <h2>PRM - 261</h2>
+                    <button class="qrButton">QR CODE</button>
+                </div>
+
+                <div class="fridge-image">
+                    <img src="/images/prm-261.png" alt="">
+                </div>
+            </div>
+            <div class="fridge prm-315">
+                <div class="fridge-text">
+                    <h2>PRM - 315</h2>
+                    <button class="qrButton">QR CODE</button>
+                </div>
+
+                <div class="fridge-image">
+                    <img src="/images/prm-315.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+    <script>
+        let qrButtons = document.querySelectorAll(".qrButton")
+        qrButtons.forEach(qrButton => {
+            qrButton.addEventListener("click", (e) => {
+                localStorage.setItem("model", qrButton.parentElement.parentElement.classList[1])
+                window.location.replace("/print")
+            }) 
+        })
+
+        document.getElementById("quit").addEventListener("click", () => {
+            localStorage.clear();
+            window.location.replace("/");
+        })
+    </script>
+</body>
+</html>
